@@ -28,10 +28,12 @@ correct labels so the team can prioritize efficiently.
 
 ## Issue context
 
-- **Title:** `${{ github.event.issue.title }}`
-- **Body:** `${{ github.event.issue.body }}`
-- **Author:** `@${{ github.event.issue.user.login }}`
+- **Issue number:** `${{ github.event.issue.number }}`
 - **Repository:** `${{ github.repository }}`
+
+Use your GitHub tools to fetch the full issue (title, body, and author) for
+issue `${{ github.event.issue.number }}` in `${{ github.repository }}` before
+classifying it — the body text isn't pre-loaded into this prompt.
 
 ## Classification rules
 

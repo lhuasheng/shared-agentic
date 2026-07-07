@@ -35,11 +35,11 @@ not, open a pull request with improvements.
 ## Context
 
 - **Repository:** `${{ github.repository }}`
-- **Commit:** `${{ github.sha }}`
+- **Commit:** `${{ github.event.after }}`
 
 ## Instructions
 
-1. Determine which files changed in this push (compare `${{ github.sha }}`
+1. Determine which files changed in this push (compare `${{ github.event.after }}`
    against its parent commit, using git or the GitHub API). Focus on files
    under `src/**`, `lib/**`, `actions/**`, `scripts/**` per this workflow's
    trigger paths.
@@ -57,7 +57,7 @@ not, open a pull request with improvements.
 4. If you find documentation gaps, use `safe-outputs create-pull-request` to
    open a draft PR with:
    - Title: `docs: sync documentation with changes from {short_sha}`, where
-     `{short_sha}` is the first 7 characters of `${{ github.sha }}`
+     `{short_sha}` is the first 7 characters of `${{ github.event.after }}`
    - Branch: `docs/sync-{short_sha}`, using the same first-7-characters value
    - Body: list of files updated and brief explanation of each change
    - Draft: true (human review required before merge)
