@@ -21,18 +21,11 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write
 
-agent:
-  model: github/copilot
-  cost-budget:
-    per-run-usd: 0.20
+engine: copilot
 
 safe-outputs:
-  - add-comment
-
-network:
-  egress: deny
+  add-comment: {}
 ---
 
 # AI PR Review
@@ -103,4 +96,3 @@ delimiter as specified in `docs/pr-comment-marker.md`.
   comment with the pre-screen verdict.
 - Do not close or merge the PR.
 - Post at most one comment per run (update existing AI-SDLC summary if present).
-- Respect the per-run cost budget of $0.20.
