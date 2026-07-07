@@ -25,19 +25,13 @@ on:
         default: ''
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+  copilot-requests: write
 
-agent:
-  model: github/copilot
-  cost-budget:
-    per-run-usd: 0.30
+engine: copilot
 
 safe-outputs:
-  - create-pull-request
-
-network:
-  egress: deny
+  create-pull-request: {}
 ---
 
 # Release Notes Generator
@@ -115,4 +109,3 @@ _Released: {date}_
 
 - Open at most one draft PR per run.
 - Do not merge the PR or publish the release directly.
-- Respect the per-run cost budget of $0.30.

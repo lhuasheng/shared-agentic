@@ -10,19 +10,13 @@ on:
 
 permissions:
   contents: read
-  issues: write
+  copilot-requests: write
 
-agent:
-  model: github/copilot
-  cost-budget:
-    per-run-usd: 0.10
+engine: copilot
 
 safe-outputs:
-  - add-label
-  - add-comment
-
-network:
-  egress: deny
+  add-labels: {}
+  add-comment: {}
 ---
 
 # Issue Triage
@@ -62,7 +56,7 @@ Add a priority label if the issue clearly warrants it:
 1. Read the issue title and body carefully.
 2. Choose the primary classification label(s) from the table above.
 3. Apply priority label if the issue warrants it.
-4. Use `safe-outputs add-label` to apply all chosen labels.
+4. Use `safe-outputs add-labels` to apply all chosen labels.
 5. Use `safe-outputs add-comment` to post a brief triage comment:
    - Confirm the classification.
    - Note what additional information is needed (if any).
@@ -78,4 +72,3 @@ Add a priority label if the issue clearly warrants it:
 - Do not assign the issue.
 - Do not add more than 4 labels total.
 - Keep the triage comment concise and factual.
-- Respect the per-run cost budget of $0.10.

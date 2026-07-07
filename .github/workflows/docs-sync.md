@@ -17,19 +17,13 @@ on:
       - '!**/README.md'
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+  copilot-requests: write
 
-agent:
-  model: github/copilot
-  cost-budget:
-    per-run-usd: 0.30
+engine: copilot
 
 safe-outputs:
-  - create-pull-request
-
-network:
-  egress: deny
+  create-pull-request: {}
 ---
 
 # Documentation Sync
@@ -73,4 +67,3 @@ not, open a pull request with improvements.
 - Open at most one PR per workflow run.
 - Keep each documentation update under 200 words.
 - Do not delete existing documentation; only add or update.
-- Respect the per-run cost budget of $0.30.

@@ -12,20 +12,13 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write
-  issues: write
+  copilot-requests: write
 
-agent:
-  model: github/copilot
-  cost-budget:
-    per-run-usd: 0.40
+engine: copilot
 
 safe-outputs:
-  - add-label
-  - add-comment
-
-network:
-  egress: deny
+  add-labels: {}
+  add-comment: {}
 ---
 
 # Architecture Review
@@ -74,7 +67,7 @@ Evaluate the PR for architectural risk:
 2. Write a concise review (under 400 words).
 3. Use `safe-outputs add-comment` to update the `architecture` section of the
    consolidated PR comment.
-4. If risk is **High**, use `safe-outputs add-label` to add `needs-human-review`.
+4. If risk is **High**, use `safe-outputs add-labels` to add `needs-human-review`.
 
 ## Comment format (section: architecture)
 
@@ -91,4 +84,3 @@ Evaluate the PR for architectural risk:
 
 - This review is informational — it must not block CI or merge.
 - Do not approve or reject the PR.
-- Respect the per-run cost budget of $0.40.

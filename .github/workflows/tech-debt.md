@@ -12,18 +12,12 @@ on:
 
 permissions:
   contents: read
-  issues: write
+  copilot-requests: write
 
-agent:
-  model: github/copilot
-  cost-budget:
-    per-run-usd: 0.50
+engine: copilot
 
 safe-outputs:
-  - create-issue
-
-network:
-  egress: deny
+  create-issue: {}
 ---
 
 # Tech Debt Scan
@@ -73,4 +67,3 @@ Use `issue-templates/tech-debt.md` as the issue body template.
 - Do not modify any repository files.
 - Create at most one issue per run.
 - Keep the total report under 800 words.
-- Respect the per-run cost budget of $0.50.

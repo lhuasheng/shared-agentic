@@ -12,20 +12,14 @@ on:
 
 permissions:
   contents: read
-  issues: write
   pull-requests: read
   actions: read
+  copilot-requests: write
 
-agent:
-  model: github/copilot
-  cost-budget:
-    per-run-usd: 0.50
+engine: copilot
 
 safe-outputs:
-  - create-issue
-
-network:
-  egress: deny
+  create-issue: {}
 ---
 
 # Weekly Engineering Digest
@@ -95,6 +89,3 @@ Structure the issue body as:
 - Do not modify any repository files.
 - Do not post PR comments.
 - Create at most one issue per run.
-- Respect the per-run cost budget of $0.50.
-- If the cost budget is reached before the report is complete, file a partial
-  issue with a note that the budget was exhausted.

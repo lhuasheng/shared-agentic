@@ -13,21 +13,14 @@ on:
 
 permissions:
   contents: read
-  issues: write
-  pull-requests: write
   actions: read
+  copilot-requests: write
 
-agent:
-  model: github/copilot
-  cost-budget:
-    per-run-usd: 0.25
+engine: copilot
 
 safe-outputs:
-  - add-comment
-  - create-issue
-
-network:
-  egress: deny
+  add-comment: {}
+  create-issue: {}
 ---
 
 # CI Failure Investigator
@@ -90,4 +83,3 @@ Use `issue-templates/ci-investigation.md` as the template.
 - Do not modify any repository files.
 - Do not re-trigger the CI workflow.
 - Post at most one comment per PR, one issue per run.
-- Respect the per-run cost budget of $0.25.

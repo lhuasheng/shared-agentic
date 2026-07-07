@@ -12,20 +12,13 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write
-  issues: write
+  copilot-requests: write
 
-agent:
-  model: github/copilot
-  cost-budget:
-    per-run-usd: 0.30
+engine: copilot
 
 safe-outputs:
-  - add-comment
-  - add-label
-
-network:
-  egress: deny
+  add-comment: {}
+  add-labels: {}
 ---
 
 # Vulnerability Triage
@@ -68,7 +61,7 @@ For each finding, assess:
 3. Use `safe-outputs add-comment` to post the report in the `security` section
    of the consolidated PR comment.
 4. If any **Critical** or **High** findings are present:
-   - Use `safe-outputs add-label` to add `security-blocked`.
+   - Use `safe-outputs add-labels` to add `security-blocked`.
 5. If findings are all **Medium** or **Low**:
    - Use `safe-outputs add-comment` only; do not add `security-blocked`.
 
@@ -97,4 +90,3 @@ For each finding, assess:
 
 - Do not modify any repository files.
 - Do not close or merge the PR.
-- Respect the per-run cost budget of $0.30.

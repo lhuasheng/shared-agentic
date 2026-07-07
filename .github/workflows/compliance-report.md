@@ -12,19 +12,13 @@ on:
 
 permissions:
   contents: read
-  issues: write
   actions: read
+  copilot-requests: write
 
-agent:
-  model: github/copilot
-  cost-budget:
-    per-run-usd: 0.40
+engine: copilot
 
 safe-outputs:
-  - create-issue
-
-network:
-  egress: deny
+  create-issue: {}
 ---
 
 # Compliance Audit Report
@@ -72,4 +66,3 @@ Use `issue-templates/compliance-report.md` as the issue body template.
 
 - Do not modify any repository files or settings.
 - Create at most one issue per run.
-- Respect the per-run cost budget of $0.40.

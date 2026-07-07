@@ -12,18 +12,12 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write
+  copilot-requests: write
 
-agent:
-  model: github/copilot
-  cost-budget:
-    per-run-usd: 0.20
+engine: copilot
 
 safe-outputs:
-  - add-comment
-
-network:
-  egress: deny
+  add-comment: {}
 ---
 
 # Coverage Improvement Suggester
@@ -88,4 +82,3 @@ The following tests would improve coverage on modified files:
 - Post at most one comment per PR (update `coverage` section of consolidated comment).
 - Do not write or commit test files.
 - Limit suggestions to 5 per run.
-- Respect the per-run cost budget of $0.20.
