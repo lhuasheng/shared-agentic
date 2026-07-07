@@ -28,7 +28,7 @@ runs only when CI passes — it must not block merge on its own.
 
 ## Trigger condition
 
-Check `{{ workflow_run.conclusion }}`. If it is not `success`, exit immediately.
+Check `${{ github.event.workflow_run.conclusion }}`. If it is not `success`, exit immediately.
 
 ## Pre-step: Collect data
 

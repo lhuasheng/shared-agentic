@@ -28,10 +28,10 @@ correct labels so the team can prioritize efficiently.
 
 ## Issue context
 
-- **Title:** `{{ issue.title }}`
-- **Body:** `{{ issue.body }}`
-- **Author:** `@{{ issue.author }}`
-- **Repository:** `{{ repository }}`
+- **Title:** `${{ github.event.issue.title }}`
+- **Body:** `${{ github.event.issue.body }}`
+- **Author:** `@${{ github.event.issue.user.login }}`
+- **Repository:** `${{ github.repository }}`
 
 ## Classification rules
 

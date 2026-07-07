@@ -34,13 +34,15 @@ not, open a pull request with improvements.
 
 ## Context
 
-- **Repository:** `{{ repository }}`
-- **Commit:** `{{ sha }}`
-- **Files changed:** `{{ changed_files }}`
+- **Repository:** `${{ github.repository }}`
+- **Commit:** `${{ github.sha }}`
 
 ## Instructions
 
-1. Review the list of changed files from the triggering push.
+1. Determine which files changed in this push (compare `${{ github.sha }}`
+   against its parent commit, using git or the GitHub API). Focus on files
+   under `src/**`, `lib/**`, `actions/**`, `scripts/**` per this workflow's
+   trigger paths.
 
 2. For each changed source file, check whether a corresponding documentation
    file exists:
@@ -54,8 +56,9 @@ not, open a pull request with improvements.
 
 4. If you find documentation gaps, use `safe-outputs create-pull-request` to
    open a draft PR with:
-   - Title: `docs: sync documentation with changes from {{ sha | slice(0,7) }}`
-   - Branch: `docs/sync-{{ sha | slice(0,7) }}`
+   - Title: `docs: sync documentation with changes from {short_sha}`, where
+     `{short_sha}` is the first 7 characters of `${{ github.sha }}`
+   - Branch: `docs/sync-{short_sha}`, using the same first-7-characters value
    - Body: list of files updated and brief explanation of each change
    - Draft: true (human review required before merge)
 

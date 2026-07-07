@@ -37,9 +37,9 @@ review is faster and higher quality.
 
 ## Context
 
-- **PR number:** `{{ inputs.pr_number }}`
-- **Repository:** `{{ inputs.repository }}`
-- **Triggered by:** `@{{ inputs.triggered_by }}`
+- **PR number:** `${{ inputs.pr_number }}`
+- **Repository:** `${{ inputs.repository }}`
+- **Triggered by:** `@${{ inputs.triggered_by }}`
 
 ## Pre-step: Collect PR data
 

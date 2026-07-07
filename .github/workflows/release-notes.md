@@ -40,15 +40,15 @@ You are a technical writer generating release notes for a new software release.
 
 ## Context
 
-- **New tag:** `{{ inputs.tag }}`
-- **Repository:** `{{ inputs.repository }}`
-- **Base tag:** `{{ inputs.base_tag }}` (if empty, detect automatically)
-- **Triggered by:** `@{{ inputs.triggered_by }}`
+- **New tag:** `${{ inputs.tag }}`
+- **Repository:** `${{ inputs.repository }}`
+- **Base tag:** `${{ inputs.base_tag }}` (if empty, detect automatically)
+- **Triggered by:** `@${{ inputs.triggered_by }}`
 
 ## Instructions
 
 1. Determine the comparison range:
-   - If `base_tag` is provided, compare `{{ inputs.base_tag }}...{{ inputs.tag }}`.
+   - If `base_tag` is provided, compare `${{ inputs.base_tag }}...${{ inputs.tag }}`.
    - If not, use the GitHub API to find the previous semver tag and use that.
 
 2. Fetch all commits between the base tag and the new tag.
@@ -70,8 +70,8 @@ You are a technical writer generating release notes for a new software release.
    - Include a migration guide section if there are breaking changes.
 
 6. Use `safe-outputs create-pull-request` to open a **draft** PR with:
-   - Branch: `release-notes/{{ inputs.tag }}`
-   - Title: `release: {{ inputs.tag }} release notes`
+   - Branch: `release-notes/${{ inputs.tag }}`
+   - Title: `release: ${{ inputs.tag }} release notes`
    - File: `RELEASE_NOTES.md` (or update `CHANGELOG.md`)
    - Draft: true
    - Body: short description linking to the tag and noting it needs review
@@ -79,7 +79,7 @@ You are a technical writer generating release notes for a new software release.
 ## Output format
 
 ```markdown
-# Release Notes — {{ inputs.tag }}
+# Release Notes — ${{ inputs.tag }}
 
 _Released: {date}_
 
