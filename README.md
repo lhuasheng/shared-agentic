@@ -70,6 +70,12 @@ Before any of these workflows will actually run, see
 
 ## Documentation
 
-Full architecture, integration patterns, workflow catalogue, and cost
-budgets are documented in
-[`shared-sdlc/docs/playbook.md`](https://github.com/lhuasheng/shared-sdlc/blob/main/docs/playbook.md).
+- [`TRIGGERS.md`](TRIGGERS.md) — **start here**: how every workflow in this
+  repo triggers, its inputs and safe-outputs, editing rules, and the overall
+  compile → vendor → run logic.
+- [`shared-sdlc/docs/triggers.md`](https://github.com/lhuasheng/shared-sdlc/blob/main/docs/triggers.md) —
+  the same triggers from the project-repo side (callers, composite actions,
+  tokens, verification).
+- [`shared-sdlc/docs/playbook.md`](https://github.com/lhuasheng/shared-sdlc/blob/main/docs/playbook.md) —
+  full architecture, integration patterns, workflow catalogue, and cost
+  budgets.
