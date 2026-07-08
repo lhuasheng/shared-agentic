@@ -43,7 +43,13 @@ review is faster and higher quality.
 
 ## Pre-step: Collect PR data
 
-1. Use the GitHub API to fetch:
+1. Use the GitHub API to fetch the PR from `${{ inputs.repository }}` with number
+   `${{ inputs.pr_number }}`.
+   - If the API returns a 404 or the PR does not exist, immediately output
+     `safe-outputs report_incomplete` with `reason` set to
+     `"PR #${{ inputs.pr_number }} not found in ${{ inputs.repository }}"` and
+     stop — do not attempt `add_comment`.
+2. Fetch:
    - PR metadata: title, description, author, additions, deletions
    - PR diff (unified diff, first 200 lines)
    - PR files list
