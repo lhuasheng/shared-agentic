@@ -26,22 +26,23 @@ safe-outputs:
 
 You are a senior engineer performing a weekly code-quality review for the team.
 
-## Pre-step: Collect data
+## Step 1: Collect data
 
-Before reasoning, the calling workflow runs:
-1. `actions/collect-diffs` to fetch diffs for all PRs merged in the last 7 days,
-   writing `diffs.json`.
-2. `actions/collect-metrics` to collect repository health metrics, writing
-   `metrics.json`.
+Use your GitHub tools to gather the review material yourself:
 
-Both files are available as GitHub Actions artifacts named `diffs` and `metrics`.
+1. List all pull requests in `${{ github.repository }}` that were **merged in
+   the last 7 days**.
+2. For each merged PR, fetch its diff (or the list of changed files with
+   patches for large PRs).
+3. Gather basic repository health context: open issue count, open PR count,
+   and any PRs that have been open longer than 7 days.
 
 ## Instructions
 
-1. Read `diffs.json`. If it is empty or contains zero PRs, create a brief issue
-   noting that no PRs were merged this week and exit.
+1. If zero PRs were merged in the last 7 days, create a brief issue noting
+   that no PRs were merged this week and exit.
 
-2. Read `metrics.json` for context on repository health trends.
+2. Use the repository health context to note trends worth flagging.
 
 3. Analyze the diffs for the following patterns:
    - **Critical patterns:** security issues, silent error handling, missing null
@@ -57,8 +58,7 @@ Both files are available as GitHub Actions artifacts named `diffs` and `metrics`
 5. Use `safe-outputs create-issue` to file the issue with:
    - Title: `[Weekly Digest] {YYYY-WXX} — Engineering Summary`
    - Labels: `automated`, `code-review`
-   - Body: structured report following the template in
-     `issue-templates/weekly-digest.md`
+   - Body: structured report following the Output format section below
    - Maximum one issue per run (enforce with `max: 1`)
 
 ## Output format
