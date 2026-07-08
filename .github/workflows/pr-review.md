@@ -97,6 +97,11 @@ Use `safe-outputs add-comment` to post the review. The comment body must begin
 with `<!-- ai-sdlc-summary -->` and include the `<!-- section:ai-review -->`
 delimiter as specified in `docs/pr-comment-marker.md`.
 
+When calling `add_comment`, always set `repo` to `${{ inputs.repository }}`
+(e.g. `lhuasheng/project-1`) and `item_number` to `${{ inputs.pr_number }}`.
+Omitting `repo` causes the safe-output handler to fall back to the workflow's
+own repository (`lhuasheng/shared-agentic`), which will result in a 404.
+
 ## Constraints
 
 - Do not approve or request changes through the GitHub review API — only post a
